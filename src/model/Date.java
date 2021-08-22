@@ -34,12 +34,8 @@ public class Date {
     public String getDate() {
         return string;
     }
-
-    /**
-     * Metodo que convierte la cadena de caracteres inmutable en nombre propio.
-     * @return contenido de la cadena convertido en nombre propio
-     */
-    /**
+    
+     /**
      * Metodo que elimina caracter escrito de la cadena de texto ya instanciada
      *
      * @param CharacterRemoved - carcaterer
@@ -55,6 +51,12 @@ public class Date {
         }
         return Delete;
     }
+
+    /**
+     * Metodo que convierte la cadena de caracteres inmutable en nombre propio.
+     * @return contenido de la cadena convertido en nombre propio
+     */
+
     public String convertirNombrePropio(){
         for (int i = 0; i < string.length()- 2; i++){
 
@@ -125,5 +127,100 @@ public class Date {
         }
 
         return aux;
+    }
+
+    /**
+     * Metodo con el que se revisa la ocurrencia de una sub cadena dentro de una cadena y se devuelve en numero de veces que esta
+     * @param subString subString sub cadena a buscar dentro de la cadena
+     * @return cont el numero de veces que se encuentra la sub cadena
+     */
+    public int countOccurrences(String subString) {
+        int cont = 0;
+        if (string.length() == subString.length()) {
+            if (string.equalsIgnoreCase(subString)) {
+                cont++;
+            }
+        } else if (string.length() < subString.length()) {
+            cont = 0;
+        } else {
+            for (int i = 0; i <= string.length() - subString.length(); i++) {
+
+                if (i == 0) {
+                    if (string.substring(i + subString.length(), (i + subString.length() + 1)).equalsIgnoreCase(" ")) {
+                        if (string.substring(i, i + subString.length()).equalsIgnoreCase(subString)) {
+                            cont++;
+                        }
+                    }
+                } else if (i < string.length() - subString.length()) {
+                    if (string.substring(i - 1, i).equalsIgnoreCase(" ")
+                            && string.substring(i + subString.length(), (i + subString.length() + 1)).equalsIgnoreCase(" ")) {
+                        if (string.substring(i, i + subString.length()).equalsIgnoreCase(subString)) {
+                            cont++;
+                        }
+                    }
+                } else {
+                    if (string.substring(i - 1, i).equalsIgnoreCase(" ")) {
+                        if (string.substring(i, i + subString.length()).equalsIgnoreCase(subString)) {
+                            cont++;
+                        }
+                    }
+                }
+            }
+        }
+        return cont;
+    }
+
+    /**
+     * Memoto que revisa si una palabra existe
+     * @param character
+     * @param string
+     * @return boolean
+     */
+
+    public static boolean frequency(String character, String string) {
+        int counter = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if (string.substring(i, i + 1).equalsIgnoreCase(character)) {
+                counter++;
+            }
+        }
+        if (counter == 0)
+            return false;
+        else
+            return true;
+    }
+
+    /**
+     * Metodo que compara una subcadena con una cadena y elimina la subcadena por izquierda o derecha
+     * @param subStrings subString subcadena a eliminar
+     * @param address address direccion por la que se va a eliminar la subcadena de la frase
+     * @return finalText
+     */
+
+    public String deleteSubstring (String subStrings, String address) {
+
+        if (address.equals("left")) {
+            String finalText = string;
+            for (int i = 0; i < string.length(); i++) {
+                if (frequency(string.substring(i, i + 1), subStrings)) {
+                    finalText = string.substring(i + 1, string.length());
+                } else {
+                    return finalText;
+                }
+
+            }
+            return finalText;
+        } else {
+            String finalText = string;
+            for (int i = string.length(); i >= 0; i--) {
+                if (frequency(string.substring(i - 1, i), subStrings)) {
+                    finalText = string.substring(0, i - 1);
+                } else {
+                    return finalText;
+                }
+
+            }
+            return finalText;
+        }
     }
 }

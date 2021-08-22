@@ -48,7 +48,10 @@ public class RunString {
                     System.out.println(object.convertirNombrePropio());
                     break;
                 case 2:
-                    System.out.println("Verifcion de mail");
+                    System.out.println("*** Buscar en cadena ****");
+                    System.out.println("Digite cadena a buscar");
+                    String subString = sc.next();
+                    System.out.println("Ocurrencias: " + object.countOccurrences(subString));
                     break;
                 case 3:
                     System.out.println("*** Encriptar texto ***");
@@ -106,7 +109,11 @@ public class RunString {
                     System.out.println("Diferencia: "+object.diferencia(sentence));
                     break;
                 case 9:
-                    System.out.println("Vercacion de mail");
+                    System.out.print("La palabra que desea eliminar es:");
+                    String subStrings = sc.next();
+                    System.out.print("Porque lado desea eliminar:");
+                    String address = sc.next();
+                    System.out.println ("La cadena con la palabra eliminada es: "+ object.deleteSubstring(subStrings, address));
                     break;
                 case 10:
                     System.out.println("*** Verificacion de mail ***");
