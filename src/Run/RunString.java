@@ -59,7 +59,7 @@ public class RunString {
                     String text = sc.next();
                     System.out.println("Digite valor de desplazamiento");
                     int key = sc.nextInt();
-                    System.out.println("Texto encriptado: " + encrypt(text, key));
+                    System.out.println("Texto encriptado: " + Date.encrypt(text, key));
                     break;
                 case 4:
                     System.out.println("*** Desencriptar texto ***");
@@ -67,7 +67,7 @@ public class RunString {
                     String textD = sc.next();
                     System.out.println("Digite valor de desplazamiento");
                     int keyD = sc.nextInt();
-                    System.out.println("Texto desencriptado: " + decrypt(textD, keyD));
+                    System.out.println("Texto desencriptado: " + Date.decrypt(textD, keyD));
                     break;
                 case 5:
                     System.out.println("Digite los nuevos caracteres a adicionar ");
@@ -117,7 +117,9 @@ public class RunString {
                     break;
                 case 10:
                     System.out.println("*** Verificacion de mail ***");
-                    requestMail();
+                    System.out.println("Digite mail a verificar");
+                    String mail = sc.next();
+                    System.out.println(object.mailValidation(mail));
                     break;
                 case 11:
                     System.exit(0);
@@ -129,69 +131,6 @@ public class RunString {
 
         }
 
-    }
-
-    /**
-     * Metodo de encriptacion de caracteres (cifrado César)
-     * @param text texto a encriptar
-     * @param key valor de desplazamiento en abecedario
-     * @return texto encriptado
-     */
-    public static String encrypt (String text, int key ) {
-        StringBuilder cifrar = new StringBuilder();
-        key = key % 26;
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'a' && text.charAt(i) <= 'z') {
-                if ((text.charAt(i) + key) > 'z') {
-                    cifrar.append((char) (text.charAt(i) + key - 26));
-                } else {
-                    cifrar.append((char) (text.charAt(i) + key));
-                }
-            } else if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                if ((text.charAt(i) + key) > 'Z') {
-                    cifrar.append((char) (text.charAt(i) + key - 26));
-                } else {
-                    cifrar.append((char) (text.charAt(i) + key));
-                }
-            }
-        }
-        return cifrar.toString();
-    }
-
-    /**
-     * Metodo de desencriptacion de caracteres (cifrado César)
-     * @param text texto a desencriptar
-     * @param key valor de dezplazamiento en abecedario
-     * @return texto desencriptado
-     */
-    public static String decrypt (String text , int key) {
-        StringBuilder cifrar = new StringBuilder();
-        key = key % 26;
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) >= 'a' && text.charAt(i) <= 'z') {
-                if ((text.charAt(i) - key) < 'a') {
-                    cifrar.append((char) (text.charAt(i) - key + 26));
-                } else {
-                    cifrar.append((char) (text.charAt(i) - key));
-                }
-            } else if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
-                if ((text.charAt(i) - key) < 'A') {
-                    cifrar.append((char) (text.charAt(i) - key + 26));
-                } else {
-                    cifrar.append((char) (text.charAt(i) - key));
-                }
-            }
-        }
-        return cifrar.toString();
-    }
-
-    /**
-     * Metodo donde se solicita al usuario digitar un correo para hacer la verificacion de validez
-     */
-    public void requestMail(){
-        System.out.println("Digite mail a verificar");
-        String mail = sc.next();
-        System.out.println(object.mailValidation(mail));
     }
 
     /**

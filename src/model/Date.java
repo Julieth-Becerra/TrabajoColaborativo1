@@ -105,6 +105,60 @@ public class Date {
         return duplicate;
     }
 
+    /**
+     * Metodo de encriptacion de caracteres (cifrado César)
+     * @param text texto a encriptar
+     * @param key valor de desplazamiento en abecedario
+     * @return texto encriptado
+     */
+    public static String encrypt (String text, int key ) {
+        StringBuilder cifrar = new StringBuilder();
+        key = key % 26;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) >= 'a' && text.charAt(i) <= 'z') {
+                if ((text.charAt(i) + key) > 'z') {
+                    cifrar.append((char) (text.charAt(i) + key - 26));
+                } else {
+                    cifrar.append((char) (text.charAt(i) + key));
+                }
+            } else if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
+                if ((text.charAt(i) + key) > 'Z') {
+                    cifrar.append((char) (text.charAt(i) + key - 26));
+                } else {
+                    cifrar.append((char) (text.charAt(i) + key));
+                }
+            }
+        }
+        return cifrar.toString();
+    }
+
+    /**
+     * Metodo de desencriptacion de caracteres (cifrado César)
+     * @param text texto a desencriptar
+     * @param key valor de dezplazamiento en abecedario
+     * @return texto desencriptado
+     */
+    public static String decrypt (String text , int key) {
+        StringBuilder cifrar = new StringBuilder();
+        key = key % 26;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) >= 'a' && text.charAt(i) <= 'z') {
+                if ((text.charAt(i) - key) < 'a') {
+                    cifrar.append((char) (text.charAt(i) - key + 26));
+                } else {
+                    cifrar.append((char) (text.charAt(i) - key));
+                }
+            } else if (text.charAt(i) >= 'A' && text.charAt(i) <= 'Z') {
+                if ((text.charAt(i) - key) < 'A') {
+                    cifrar.append((char) (text.charAt(i) - key + 26));
+                } else {
+                    cifrar.append((char) (text.charAt(i) - key));
+                }
+            }
+        }
+        return cifrar.toString();
+    }
+
 
 
     /**
