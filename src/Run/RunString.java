@@ -67,10 +67,32 @@ public class RunString {
                     System.out.println("Texto desencriptado: " + decrypt(textD, keyD));
                     break;
                 case 5:
-                    System.out.println("Verificacion de mail");
+                    System.out.println("Digite los nuevos caracteres a adicionar ");
+                    String NewText = sc.next();
+                    System.out.println(" digite cuantas veces quiere que se repita el caracter posteriormente escrito? ");
+                    int numero = sc.nextInt();
+                    String repetido = new String(new char[numero]).replace("\0", NewText);
+                    int op = 0;
+                    while (op != 3) {
+                        System.out.println("llenar caracter en :"
+                                + "\n1. izquierda"
+                                + "\n2. derecha"
+                        );
+                        op = sc.nextByte();
+
+                        switch (op) {
+                            case 1:
+                                System.out.print(repetido + object.getDate());
+                            case 2:
+                                System.out.print(object.getDate() + repetido);
+                        }
+                        break;
+                    }
                     break;
                 case 6:
-                    System.out.println("Veficacion de mail");
+                    System.out.println("escriba el caracter a eliminar ");
+                    String CharacterRemoved = sc.next();
+                    System.out.println(object.DeleteCharacter(CharacterRemoved));
                     break;
                 case 7:
 

@@ -39,6 +39,22 @@ public class Date {
      * Metodo que convierte la cadena de caracteres inmutable en nombre propio.
      * @return contenido de la cadena convertido en nombre propio
      */
+    /**
+     * Metodo que elimina caracter escrito de la cadena de texto ya instanciada
+     *
+     * @param CharacterRemoved - carcaterer
+     * @return Delete - cadena de caracteres
+     */
+    public String DeleteCharacter(String CharacterRemoved) {
+        String Delete = "";
+        for (int i = 0; i < string.length(); i++) {
+            String aux = Character.toString(string.charAt(i));
+            if (!CharacterRemoved.contains(aux)) {
+                Delete += aux.toLowerCase();
+            }
+        }
+        return Delete;
+    }
     public String convertirNombrePropio(){
         for (int i = 0; i < string.length()- 2; i++){
 
