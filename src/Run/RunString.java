@@ -3,7 +3,7 @@
  */
 package Run;
 import java.util.Scanner;
-import model.string;
+import model.Date;
 
 /**
  * Clase que permite la ejecucion del programa
@@ -16,7 +16,7 @@ public class RunString {
     /**
      * Se crea objeto de tipo string() (clase modelo)
      */
-    string object = new string();
+    Date object = new Date();
 
     /**
      * Menu del programa
@@ -45,7 +45,7 @@ public class RunString {
             switch (opc) {
 
                 case 1:
-                    System.out.println("Verificacon de mail");
+                    System.out.println(object.convertirNombrePropio());
                     break;
                 case 2:
                     System.out.println("Verifcion de mail");
@@ -73,10 +73,15 @@ public class RunString {
                     System.out.println("Veficacion de mail");
                     break;
                 case 7:
-                    System.out.println("Verificacion ");
+
+                    System.out.println("escriba la palabra a intersectar");
+                   String sentence = sc.next();
+                    System.out.println("Interseccion:  "+object.intersection(sentence));
                     break;
                 case 8:
-                    System.out.println("Verif mail");
+                    System.out.println("escriba la palabra a diferenciar");
+                     sentence = sc.next();
+                    System.out.println("Diferencia: "+object.diferencia(sentence));
                     break;
                 case 9:
                     System.out.println("Vercacion de mail");
